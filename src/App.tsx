@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddTodos from './Components/AddTodos';
+import InProgressTodos from './Components/InProgressTodos';
+import DoneTodos from './Components/DoneTodos';
+import WrongPaths from './Components/WrongPaths';
+import Header from './Components/Header';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<AddTodos />} />
+        <Route path="InProgressTodos" element={<InProgressTodos />} />
+        <Route path="DoneTodos" element={<DoneTodos />} />
+        <Route path="*" element={<WrongPaths />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
-
-export default App;
